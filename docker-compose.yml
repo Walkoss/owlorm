@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db-mysql:
+    restart: always
+    image: "mysql:latest"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-mysql-volume:/var/lib/mysql
+    env_file:
+      - .env
+  cpp:
+    image: "owlorm/cpp"
+    build:
+      context: ./
+    volumes:
+      - .:/app
+    env_file:
+      .env
+    depends_on:
+      - db-mysql
+    links:
+      - db-mysql
+volumes:
+  db-mysql-volume:
