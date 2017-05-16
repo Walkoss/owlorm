@@ -6,7 +6,7 @@
 owlorm
 
 # Libraries
-liborm
+liborm*
 
 # Environment variables
 .env
