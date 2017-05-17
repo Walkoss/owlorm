@@ -3,6 +3,13 @@
 
 #include "../SqlAdapter.hh"
 #include "../../DB/DBConfiguration/DBConfiguration.hh"
+#include <stdexcept>
+#include "mysql_connection.h"
+
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/resultset.h>
+#include <cppconn/statement.h>
 
 namespace ORM
 {
@@ -10,8 +17,11 @@ namespace ORM
   {
     public:
       static  MySqlAdapter& getMySqlAdapter();
-      bool  connect(const DBConfiguration&) override;
-      bool  disconnect() override;
+      void                  connect(const DBConfiguration&) override;
+      void                  disconnect() override;
+
+    private:
+      sql::Connection* _con;
   };
 }
 

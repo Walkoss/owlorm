@@ -12,20 +12,32 @@ ORM::DB& ORM::DB::getDB()
     return instance;
 }
 
-bool    ORM::DB::connect(const ORM::DBConfiguration& configuration) const
+bool    ORM::DB::connect(const ORM::DBConfiguration& configuration)
 {
-    _sqlAdapterMap[configuration.getDriver()]->connect(configuration);
-    // Todo: store this configuration to retrieve an adapter with ORM::DB::getSqlAdapter()
+    try {
+        auto it = _sqlAdapterMap.find(configuration.getDriver());
+        if (it != _sqlAdapterMap.end())
+        {
+            _sqlAdapter = it->second;
+            _sqlAdapter->connect(configuration);
+        }
+
+    } catch (sql::SQLException & e) {
+        std::cout << e.what() << std::endl;
+        return false;
+    }
     return true;
+    // Todo: store this configuration to retrieve an adapter with ORM::DB::getSqlAdapter()
 }
 
 bool    ORM::DB::disconnect() const
 {
-    // Todo: Call disconnect on adapter
+  /*  try {
+*/
     return true;
 }
 
-// ORM::SqlAdapter& ORM::DB::getSqlAdapter() const
-// {
-//     return 
-// }
+ORM::SqlAdapter* ORM::DB::getSqlAdapter() const
+{
+    return _sqlAdapter;
+}
