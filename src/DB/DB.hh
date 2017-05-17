@@ -18,7 +18,7 @@ namespace ORM
               bool        disconnect() const;
               SqlAdapter& getSqlAdapter() const;
     private:
-      static  std::unordered_map<std::string, ORM::MySqlAdapter&>  _sqlAdapterMap;
+      static  std::unordered_map<std::string, ORM::SqlAdapter*>  _sqlAdapterMap;
   };
 } 
 

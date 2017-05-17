@@ -1,8 +1,8 @@
 #include "DB.hh"
 
-std::unordered_map<std::string, ORM::MySqlAdapter&> ORM::DB::_sqlAdapterMap
+std::unordered_map<std::string, ORM::SqlAdapter*> ORM::DB::_sqlAdapterMap
 {
-    {"mysql", ORM::MySqlAdapter::getMySqlAdapter()}
+    {"mysql", &ORM::MySqlAdapter::getMySqlAdapter()}
 };
 
 ORM::DB& ORM::DB::getDB()
@@ -14,8 +14,7 @@ ORM::DB& ORM::DB::getDB()
 
 bool    ORM::DB::connect(const ORM::DBConfiguration& configuration) const
 {
-    (void) configuration;
-    // _sqlAdapterMap[configuration.getDriver()].connect(configuration);
+    _sqlAdapterMap[configuration.getDriver()]->connect(configuration);
     // Todo: store this configuration to retrieve an adapter with ORM::DB::getSqlAdapter()
     return true;
 }
