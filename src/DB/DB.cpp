@@ -37,7 +37,13 @@ bool    ORM::DB::connect(const ORM::DBConfiguration& configuration)
 
 void    ORM::DB::disconnect() const
 {
-    _sqlAdapter->disconnect();
+    if (_sqlAdapter)
+        _sqlAdapter->disconnect();
+}
+
+ORM::DB::~DB() 
+{
+    disconnect();
 }
 
 ORM::SqlAdapter* ORM::DB::getSqlAdapter() const

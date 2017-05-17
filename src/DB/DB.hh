@@ -17,6 +17,7 @@ namespace ORM
               bool        connect(const DBConfiguration&);
               void        disconnect() const;
               SqlAdapter* getSqlAdapter() const;
+                          ~DB();
 
     private:
               SqlAdapter*                                         _sqlAdapter;
