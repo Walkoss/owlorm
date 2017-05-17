@@ -5,7 +5,6 @@
 #include "../../DB/DBConfiguration/DBConfiguration.hh"
 
 #include <stdexcept>
-#include <mysql_connection.h>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 
