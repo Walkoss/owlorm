@@ -3,9 +3,9 @@
 
 #include "../SqlAdapter.hh"
 #include "../../DB/DBConfiguration/DBConfiguration.hh"
-#include <stdexcept>
-#include "mysql_connection.h"
 
+#include <stdexcept>
+#include <mysql_connection.h>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 
