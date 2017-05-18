@@ -21,3 +21,13 @@ ORM::Fields ORM::Table::getFields() const
 {
     return _fields;
 }
+
+const std::string& ORM::Table::getTableName() const
+{
+    return _tableName;
+}
+
+const std::string& ORM::Table::getPrimaryKeyColumnName() const
+{
+    return _primaryKeyColumnName;
+}
