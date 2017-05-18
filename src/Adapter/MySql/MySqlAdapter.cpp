@@ -24,18 +24,18 @@ void    ORM::MySqlAdapter::disconnect()
 
 void    ORM::MySqlAdapter::insert(const ORM::Table& tab) const
 {
-    std::string             keys;
-    std::string             values;
-    std::string             query;
-    sql::PreparedStatement  *pstmt;
-    const auto&             fieldMap = tab.getFields();
+    std::string                 keys;
+    std::string                 values;
+    std::string                 query;
+    sql::PreparedStatement*     pstmt; 
+    decltype(auto)              fieldMap = tab.getFields();
     
     for (auto it = fieldMap.begin(); it != fieldMap.end(); ++it)
     {
         ORM::BaseField& field = it->second;
         auto tmpIt = it;
         keys.append(it->first);
-        values.append("\"" + (it->second).getStringValue() + "\"");
+        values.append("\"" + (field).getStringValue() + "\"");
 
         if (++tmpIt != fieldMap.end())
         {
