@@ -6,3 +6,6 @@ RUN echo 'alias etnacpp="g++ -std=c++14 -Wall -pedantic -Wextra -Werror -g"' >> 
 
 WORKDIR /app
 VOLUME /app
+
+# enable color in terminal
+ENV TERM=xterm-256color

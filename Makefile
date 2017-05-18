@@ -3,8 +3,10 @@ CXX       = g++
 CXXFLAGS  = -std=c++14 -Wall -pedantic -Wextra -Werror
 OBJ       = $(SRC:%.cpp=%.o)
 RM        = rm -f
-# Add source files here
-#SRC      = main.cpp
+SRC       = src/DB/DB.cpp								\
+            src/DB/DBConfiguration/DBConfiguration.cpp	\
+            src/Adapter/MySql/MySqlAdapter.cpp			\
+            src/Table/Table.cpp
 
 .PHONY:	all $(NAME) clean fclean re
 
