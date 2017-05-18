@@ -21,7 +21,7 @@ namespace ORM
 
     private:
               SqlAdapter*                                         _sqlAdapter;
-      static  std::unordered_map<std::string, ORM::SqlAdapter*>   _sqlAdapterMap;
+      static  std::unordered_map<std::string, ORM::SqlAdapter&>   _sqlAdapterMap;
   };
 } 
 

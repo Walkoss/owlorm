@@ -1,8 +1,8 @@
 #include "DB.hh"
 
-std::unordered_map<std::string, ORM::SqlAdapter*> ORM::DB::_sqlAdapterMap
+std::unordered_map<std::string, ORM::SqlAdapter&> ORM::DB::_sqlAdapterMap
 {
-    {"mysql", &ORM::MySqlAdapter::getMySqlAdapter()}
+    {"mysql", ORM::MySqlAdapter::getMySqlAdapter()}
 };
 
 ORM::DB& ORM::DB::getDB()
@@ -20,7 +20,7 @@ bool    ORM::DB::connect(const ORM::DBConfiguration& configuration)
         
         if (it != _sqlAdapterMap.end())
         {
-            _sqlAdapter = it->second;
+            _sqlAdapter = &it->second;
             _sqlAdapter->connect(configuration);
         }
 
