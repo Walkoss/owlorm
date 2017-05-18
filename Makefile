@@ -5,7 +5,8 @@ OBJ       = $(SRC:%.cpp=%.o)
 RM        = rm -f
 SRC       = src/DB/DB.cpp								\
 			src/DB/DBConfiguration/DBConfiguration.cpp	\
-			src/Adapter/MySql/MySqlAdapter.cpp
+			src/Adapter/MySql/MySqlAdapter.cpp			\
+			src/Table/Table.cpp
 
 .PHONY:	all $(NAME) clean fclean re
 
