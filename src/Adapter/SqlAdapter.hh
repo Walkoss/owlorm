@@ -8,8 +8,8 @@ namespace ORM
   class SqlAdapter
   {
     public:
-      virtual bool  connect(const DBConfiguration&) = 0;
-      virtual bool  disconnect() = 0;
+      virtual void  connect(const DBConfiguration&) = 0;
+      virtual void  disconnect() = 0;
   };
 }
 

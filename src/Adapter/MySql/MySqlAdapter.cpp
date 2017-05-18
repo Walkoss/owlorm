@@ -7,13 +7,17 @@ ORM::MySqlAdapter& ORM::MySqlAdapter::getMySqlAdapter()
     return instance;
 }
 
-bool    ORM::MySqlAdapter::connect(const ORM::DBConfiguration& configuration)
+void    ORM::MySqlAdapter::connect(const ORM::DBConfiguration& configuration)
 {
-    (void) configuration;
-    return true;
+    sql::Driver *driver;
+
+    driver = get_driver_instance();
+    _con = driver->connect(configuration.getHost(), configuration.getUser(), configuration.getPass());
+    _con->setSchema(configuration.getDatabaseName());
 }
 
-bool    ORM::MySqlAdapter::disconnect()
+void    ORM::MySqlAdapter::disconnect()
 {
-    return true;
+    if (_con)
+        _con->close();
 }

@@ -14,11 +14,14 @@ namespace ORM
   {
     public:
       static  DB&         getDB();
-              bool        connect(const DBConfiguration&) const;
-              bool        disconnect() const;
-              SqlAdapter& getSqlAdapter() const;
+              bool        connect(const DBConfiguration&);
+              void        disconnect() const;
+              SqlAdapter* getSqlAdapter() const;
+                          ~DB();
+
     private:
-      static  std::unordered_map<std::string, ORM::SqlAdapter*>  _sqlAdapterMap;
+              SqlAdapter*                                         _sqlAdapter;
+      static  std::unordered_map<std::string, ORM::SqlAdapter*>   _sqlAdapterMap;
   };
 } 
 
