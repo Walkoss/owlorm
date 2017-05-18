@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
 
 namespace ORM
 {
@@ -16,6 +17,7 @@ namespace ORM
       static  MySqlAdapter& getMySqlAdapter();
       void                  connect(const DBConfiguration&) override;
       void                  disconnect() override;
+      void                  insert(const Table&) const override;
 
     private:
       sql::Connection* _con;

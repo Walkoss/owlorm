@@ -20,7 +20,7 @@ bool    ORM::DB::connect(const ORM::DBConfiguration& configuration)
         
         if (it != _sqlAdapterMap.end())
         {
-            _sqlAdapter = &it->second;
+            _sqlAdapter = &(it->second);
             _sqlAdapter->connect(configuration);
         }
 
