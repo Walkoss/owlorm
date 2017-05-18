@@ -10,6 +10,7 @@
 
 namespace ORM
 {
+  typedef std::unordered_map<std::string, ORM::SqlAdapter&> SqlAdapterMap;
   class DB
   {
     public:
@@ -20,8 +21,8 @@ namespace ORM
                           ~DB();
 
     private:
-              SqlAdapter*                                         _sqlAdapter;
-      static  std::unordered_map<std::string, ORM::SqlAdapter&>   _sqlAdapterMap;
+              SqlAdapter*   _sqlAdapter;
+      static  SqlAdapterMap _sqlAdapterMap;
   };
 } 
 
